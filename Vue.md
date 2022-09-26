@@ -1,132 +1,88 @@
 # Vue
 
-## 引入Vue
+![image-20220925162800185](img/1.png)
 
-~~~HTML
-<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+渐进式JavaScript框架
+
+~~~markdown
+# 渐进式
+	1、易用 HTML CSS JavaScript
+	2、高效 开发前端页面非常高效
+	3、灵活 开发灵活，多样性
+# 总结
+	vue属于JavaScript框架，简化js页面操作
+	bootstrap是一个css框架，封装css	
+# vue出现
+	打破了前后端分离的现状 大家一直使用jQuery 可以让程序员很轻松的完成数据和试图的绑定   双向绑定 MVVM模式
+# vue作者
+	尤雨溪
+# 前端发展史
+	html + js  ===> html+css+jquery ===> vue(前后端分离) 发送json格式的请求 发送到后端 后端数据
 ~~~
 
-## 创建Vue实例
+# Vue入门
 
-~~~HTML
-<div id="#app">
-    {{message}}
-</div>
+### 2.1下载vue.js
 
-<script>
-	var app = new Vue({
-		//el:element缩写
-        el:"#app",
-        data:{
-            message="Hello Vue!!"
-        }
-    })
-</script>
+~~~js
+//开发版本
+//开发环境版本
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
+//生产版本
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.10"></script>
 ~~~
 
-## 选择结构
-
-条件是vue实例中data数据的返回值
-
-- v-if if块
-
-- v-else else块
-
-- v-else-if else if 块
-
-  ~~~html
-  <div v-if="条件"></div>
-  <div v-else-if="条件"></div>
-  <div v-else></div>
-  ~~~
-
-## for循环
-
-1. 遍历数组：v-for="对象名 in 数组名"
-
-   ~~~html
-   <div id="#app">
-       <li v-for="item in items">
-       	{{item.message}}
-       </li>
-   </div>
-   
-   <script>
-   	var app = new Vue({
-           el:"#app",
-           data:{
-               //items数组
-               items:[
-                   {message:'aa'},
-                   {message:'bb'}
-               ]
-           }
-       })
-   </script>
-   ~~~
-
-## 事件处理
+### 2.2Vue的第一个入门应用
 
 ~~~html
-<button class=".app" v-on:click="count += 1">
-    {{count}}
-</button>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入vue.js -->
+    <script src="../lib/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- 差值表达式：{{属性名}} -->
+        <h2>{{msg}}</h2>
+        <h3>{{msg}}</h3>
+        <div>
+            {{msg}}
+        </div>
+        <div>{{count}}</div>
+        <div>{{count+1}}</div>
+        <h3>
+            {{contant.toUpperCase()}}
+            {{contant.length}}
+        </h3>
+    </div>
+</body>
+
+</html>
 <script>
-	var app = new Vue({
-        el:".app",
-        data:{
-            count:0
-        }
-    })
+    //创建一个vue实例
+    new Vue({
+        el: "#app", //element 代表vue实例的作用范围
+        data: {
+            msg: "poiutyre",
+            count: 0,
+            contant: 'sadasdasd'
+        }//自定义各种数据
+    }); 
 </script>
 ~~~
 
-## 表单输入绑定
-
-~~~html
-<input type="text" v-model="ell"></input>
-
-<div>
-    {{ell}}
-</div>
-
-<script>
-	var app = new Vue({
-        el:".app",
-        data:{
-            ell:''
-        }
-    })
-</script>
-~~~
-
-
-
-
-## Axios
-
-~~~html
-<!--引入Axios-->
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<!--读取json文件-->
-<script>
-	var app = new Vue({
-        el:"#app",
-        data(){
-            return{
-                info:{
-                    键:值
-                }
-            }
-        }
-        //钩子函数
-        mounted(){
-        	axios
-            	.get("json的位置")
-        	    .then(respone => this.info = respone.data)
-    	}
-    })
-</script>
+~~~markdown
+# 总结
+	1、一个页面只能存在一个Vue实例,不能创建多个Vue实例
+	2、Vue实例中el属性 代表Vue实例的作用范围，如果想在vue实例的范围内使用 可以使用 {{data属性中的变量名}} 直接进行调用
+	3、如果使用{{}}进行data的数据获取的时候，可以在{{}}取值语法中及逆行给各种运算逻辑运算相关方法进行使用
 ~~~
 
